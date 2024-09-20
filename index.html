@@ -2,7 +2,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="normalize.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
     <title>Chuck Norris Jokes</title>
   </head>
-  <body></body>
+  <body>
+    <main>
+      <section class="left">
+        <div class="top">
+          <h4>MSI 2020</h4>
+          <div class="topFav">
+            <button class="openFav">
+              <img src="./images/favButtonOpen.svg" />
+            </button>
+            <h4 class="favourite">Favourite</h4>
+          </div>
+        </div>
+        <h2>Hey!</h2>
+        <h3>Let’s try to find a joke for you:</h3>
+        <form>
+          <label
+            ><input
+              type="radio"
+              name="jokeType"
+              value="random"
+              checked />Random</label
+          >
+          <label
+            ><input type="radio" name="jokeType" value="categories" />Categories
+            <div class="categorySelector"></div
+          ></label>
+          <label
+            ><input type="radio" name="jokeType" value="search" />Search
+          </label>
+          <input
+            type="text"
+            class="searchInput"
+            placeholder="Free text search..." />
+          <button type="button" class="getJokeButton">Get a joke</button>
+        </form>
+        <section class="jokes"></section>
+      </section>
+      <section class="right">
+        <div class="fav">
+          <button class="closeFav">
+            <img src="./images/favButtonClose.svg" />
+          </button>
+          <h4 class="favourite">Favourite</h4>
+        </div>
+        <div class="favouriteJokes"></div>
+      </section>
+    </main>
+    <script src="index.js" type="module"></script>
+  </body>
 </html>
