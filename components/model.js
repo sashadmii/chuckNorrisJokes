@@ -1,77 +1,71 @@
 import { renderCard, renderCategory } from './view.js';
 
 const API = 'https://api.chucknorris.io/jokes/';
+const categoriesArray = [];
 
-export function fetchRandomJoke() {
-  fetch(`${API}random`)
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-    })
-    .then((data) => {
-      renderCard(data);
-    });
+export async function fetchRandomJoke() {
+  try {
+    const response = await fetch(`${API}random`);
+    const jokeData = await response.json();
+
+    renderCard(jokeData);
+  } catch (error) {
+    console.error('Error fetching random joke:', error);
+  }
 }
 
-export const countTime = (lastUpdateDate) => {
-  const date = new Date(lastUpdateDate);
-  const convertToMilli = date.getTime();
-  const difference = Date.now() - convertToMilli;
-  const hours = Math.floor(difference / 1000 / 60 / 60);
-  return hours;
-};
-
-const array = [];
-
-export function fetchCategories() {
-  if (array.length > 0) {
+export async function fetchCategories() {
+  if (categoriesArray.length > 0) {
     return;
   }
-  fetch(`${API}categories`)
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-    })
-    .then((categories) =>
-      categories.forEach((category) => {
-        renderCategory(category);
-        array.push(category);
-      })
-    );
+
+  try {
+    const response = await fetch(`${API}categories`);
+    const categories = await response.json();
+
+    categories.forEach((category) => {
+      renderCategory(category);
+      categoriesArray.push(category);
+    });
+  } catch (error) {
+    console.error('Error fetching catogories:', error);
+  }
 }
 
-export const fetchCategoryJoke = (e) => {
+export async function fetchCategoryJoke(e) {
   const category = e.target.value;
 
-  fetch(`${API}random?category=${category}`)
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-    })
-    .then((data) => renderCard(data));
-};
+  try {
+    const response = await fetch(`${API}random?category=${category}`);
+    const catJokeData = await response.json();
 
-export const fetchJokeBySearch = (searchText) => {
-  fetch(`${API}search?query=${searchText}`)
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-    })
-    .then((data) => data.result.forEach((joke) => renderCard(joke)));
-};
+    renderCard(catJokeData);
+  } catch (error) {
+    console.error(`Error fetching ${category} joke:`, error);
+  }
+}
+
+export async function fetchJokeBySearch(searchText) {
+  try {
+    const response = await fetch(`${API}search?query=${searchText}`);
+    const searchJokeData = await response.json();
+
+    searchJokeData.result.forEach((joke) => renderCard(joke));
+  } catch (error) {
+    console.error(`Error fetching jokes about ${searchText}:`, error);
+  }
+}
 
 export const addToStorage = (e) => {
   const joke = e.target.value;
   const id = e.target.id;
+
   localStorage.setItem(id, joke);
 };
 
 export const deleteFomStorage = (e) => {
   const id = e.target.id;
+
   localStorage.removeItem(id);
 };
 
@@ -82,11 +76,22 @@ export const checkStorage = (id) => {
 export const renderFavourites = () => {
   for (let i = 0; i < localStorage.length; i++) {
     const value = localStorage.getItem(localStorage.key(i));
+
     if (value) {
       const data = JSON.parse(value);
       renderCard(data);
     }
   }
+};
+
+export const countTime = (lastUpdateDate) => {
+  const date = new Date(lastUpdateDate);
+
+  const dateToMs = date.getTime();
+  const difference = Date.now() - dateToMs;
+
+  const hours = Math.floor(difference / 1000 / 60 / 60);
+  return hours;
 };
 
 renderFavourites();

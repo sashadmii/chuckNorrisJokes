@@ -4,15 +4,10 @@ import {
   fetchJokeBySearch,
 } from './components/model.js';
 
-const getJoke = (e) => {
-  const checkedCategory = document.querySelector(
-    'input[name=jokeType]:checked'
-  );
-  const categoryValue = checkedCategory.value;
+let categoryValue;
 
-  if (categoryValue === 'random') {
-    fetchRandomJoke();
-  }
+const getJokeType = (e) => {
+  categoryValue = e.target.value;
 
   if (categoryValue === 'categories') {
     document.querySelector('.categorySelector').style.display = 'block';
@@ -23,18 +18,24 @@ const getJoke = (e) => {
 
   if (categoryValue === 'search') {
     document.querySelector('.searchInput').style.display = 'block';
-    const searchText = document.querySelector('.searchInput').value;
-    if (searchText.length > 0) {
-      fetchJokeBySearch(searchText);
-      document.querySelector('.searchInput').value = '';
-    }
   } else {
     document.querySelector('.searchInput').style.display = 'none';
   }
 };
 
-const button = document.querySelector('.getJokeButton');
-button.addEventListener('click', getJoke);
+const getJoke = (e) => {
+  if (categoryValue === 'random') {
+    fetchRandomJoke();
+  }
+
+  if (categoryValue === 'search') {
+    const searchText = document.querySelector('.searchInput').value;
+    if (searchText.length > 0) {
+      fetchJokeBySearch(searchText);
+      document.querySelector('.searchInput').value = '';
+    }
+  }
+};
 
 const openFavourites = () => {
   document.querySelector('.right').style.right = '0rem';
@@ -43,15 +44,22 @@ const openFavourites = () => {
   document.querySelector('.left').style.opacity = '50%';
 };
 
-const openFavButton = document.querySelector('.openFav');
-openFavButton.addEventListener('click', openFavourites);
-
 const closeFavourites = () => {
   document.querySelector('.right').style.right = '-30rem';
   document.querySelector('.topFav').style.display = 'flex';
   document.querySelector('.left').style.background = 'none';
   document.querySelector('.left').style.opacity = '100%';
 };
+
+document.querySelectorAll('input[name=jokeType]').forEach((element) => {
+  element.addEventListener('click', getJokeType);
+});
+
+const button = document.querySelector('.getJokeButton');
+button.addEventListener('click', getJoke);
+
+const openFavButton = document.querySelector('.openFav');
+openFavButton.addEventListener('click', openFavourites);
 
 const closeFavButton = document.querySelector('.closeFav');
 closeFavButton.addEventListener('click', closeFavourites);
