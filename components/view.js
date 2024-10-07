@@ -15,8 +15,8 @@ const createLikeButton = (data) => {
   icon.value = JSON.stringify(data);
   icon.src =
     checkStorage(data.id) === true
-      ? '../public/images/filledheartIcon.svg'
-      : '../public/images/heartIcon.svg';
+      ? './static/images/filledheartIcon.svg'
+      : './static/images/heartIcon.svg';
 
   button.classList.add('likeButton');
   button.onclick =
@@ -40,23 +40,23 @@ export const renderCard = (data) => {
     checkStorage(data.id) === true ? '.favouriteJokes' : '.jokes'
   );
 
-  const hours = countTime(data.updated_at);
+  const lastUpdate = countTime(data.updated_at);
   const likeButton = createLikeButton(data);
 
   messageIcon.classList.add('messageIcon');
   messageIcon.src =
     checkStorage(data.id) === true
-      ? '../public/images/darkMessageIcon.svg'
-      : '../public/images/messageIcon.svg';
+      ? './static/images/darkMessageIcon.svg'
+      : './static/images/messageIcon.svg';
 
   id.classList.add('grey');
-  id.innerHTML = `ID: <a href=${data.url} target='_blank'><span class='blue'>${data.id}<span></a><img class='linkIcon' src='../public/images/linkIcon.svg'/>`;
+  id.innerHTML = `ID: <a href=${data.url} target='_blank'><span class='blue'>${data.id}<span></a><img class='linkIcon' src='./static/images/linkIcon.svg'/>`;
 
   joke.classList.add('joke');
   joke.innerHTML = data.value;
 
   date.classList.add('grey');
-  date.innerHTML = `<span class='thin'>Last update:</span> ${hours} hours ago`;
+  date.innerHTML = `<span class='thin'>Last update:</span> ${lastUpdate}`;
 
   category.innerHTML =
     data.categories?.length > 0

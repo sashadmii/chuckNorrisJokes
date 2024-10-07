@@ -40,15 +40,13 @@ const getJoke = (e) => {
 const openFavourites = () => {
   document.querySelector('.right').style.right = '0rem';
   document.querySelector('.topFav').style.display = 'none';
-  document.querySelector('.left').style.background = 'rgba(0,0,0,0.5)';
-  document.querySelector('.left').style.opacity = '50%';
+  document.querySelector('.cover-block').style.display = 'block';
 };
 
 const closeFavourites = () => {
-  document.querySelector('.right').style.right = '-30rem';
+  document.querySelector('.right').style.right = '-50rem';
   document.querySelector('.topFav').style.display = 'flex';
-  document.querySelector('.left').style.background = 'none';
-  document.querySelector('.left').style.opacity = '100%';
+  document.querySelector('.cover-block').style.display = 'none';
 };
 
 document.querySelectorAll('input[name=jokeType]').forEach((element) => {

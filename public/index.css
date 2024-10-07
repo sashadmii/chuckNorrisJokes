@@ -74,6 +74,10 @@ a {
   font-weight: 400;
 }
 
+.jokeBody {
+  width: 100%;
+}
+
 .jokeData {
   display: inline-flex;
   width: 100%;
@@ -117,6 +121,7 @@ form {
   display: flex;
   flex-direction: column;
 }
+
 label {
   margin-bottom: 0.8125rem;
 }
@@ -273,12 +278,26 @@ input[type='radio'] {
 
   .right {
     position: fixed;
+    height: 100vh;
     width: 30rem;
     top: 0;
     right: -30rem;
     background-color: #f8f8f8;
     padding: 0;
     transition: all 0.7s ease-in-out;
+    z-index: 10;
+  }
+
+  .cover-block {
+    display: none;
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9;
   }
 
   .fav {
@@ -340,6 +359,7 @@ input[type='radio'] {
 
   .right {
     position: fixed;
+    height: 100vh;
     width: 100%;
     top: 0;
     right: -100%;

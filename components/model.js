@@ -1,4 +1,6 @@
 import { renderCard, renderCategory } from './view.js';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
 const API = 'https://api.chucknorris.io/jokes/';
 const categoriesArray = [];
@@ -85,13 +87,12 @@ export const renderFavourites = () => {
 };
 
 export const countTime = (lastUpdateDate) => {
-  const date = new Date(lastUpdateDate);
+  dayjs.extend(relativeTime);
 
-  const dateToMs = date.getTime();
-  const difference = Date.now() - dateToMs;
+  const now = dayjs();
+  const lastUpdate = dayjs(lastUpdateDate).from(now);
 
-  const hours = Math.floor(difference / 1000 / 60 / 60);
-  return hours;
+  return lastUpdate;
 };
 
 renderFavourites();
