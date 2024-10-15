@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+  font-family: 'Roboto';
+  font-size: 1.125rem;
+  color: #333333;
+}
+
+main {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.left {
+  width: 63%;
+  padding: 2.5rem 8.75rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f8f8;
+  border-radius: 1.25rem;
+  width: auto;
+  padding: 2.8125rem 2.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.likeButton {
+  border: none;
+  background-color: #f8f8f8;
+  align-self: flex-end;
+  margin-bottom: 0.625rem;
+}
+
+.likeButton:hover {
+  cursor: pointer;
+}
+
+.messageIcon {
+  margin-right: 1.25rem;
+  align-self: flex-start;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: row;
+}
+
+.grey {
+  font-size: 0.625rem;
+  color: #ababab;
+  font-weight: 500;
+}
+
+a {
+  color: #8ea7ff;
+}
+
+.linkIcon {
+  color: #8ea7ff;
+  margin-left: 0.3125rem;
+}
+
+.joke {
+  line-height: 1.625rem;
+  margin-top: 0.3125rem;
+  margin-bottom: 1.75rem;
+}
+
+.thin {
+  font-weight: 400;
+}
+
+.jokeBody {
+  width: 100%;
+}
+
+.jokeData {
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.jokeCategory {
+  background-color: #fff;
+  padding: 0.375rem 1.25rem;
+  border-radius: 0.375rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+h2,
+h3,
+h4 {
+  line-height: 2.75rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 2.6875rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  margin-bottom: 4.875rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 0.8125rem;
+}
+
+input[type='radio'] {
+  transform: scale(1.5);
+  color: #ababab;
+  accent-color: #333333;
+  margin-right: 0.9375rem;
+}
+
+.getJokeButton {
+  width: 9.5rem;
+  height: 2.625rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #8ea7ff;
+  padding: 0.625rem 2.5rem;
+  border: none;
+  border-radius: 0.625rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.categorySelector {
+  display: none;
+  margin-top: 1.25rem;
+  margin-bottom: 0.4375rem;
+}
+
+.categoryButton {
+  margin-right: 0.625rem;
+  margin-bottom: 0.625rem;
+  border: 0.125rem solid #f8f8f8;
+  border-radius: 0.375rem;
+  background-color: #fff;
+  height: 1.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.125rem;
+  color: #ababab;
+}
+
+.categoryButton:hover {
+  cursor: pointer;
+  background-color: #f8f8f8;
+  color: #333333;
+}
+
+.categoryButton:active {
+  cursor: pointer;
+  background-color: #f8f8f8;
+  color: #333333;
+}
+
+.categoryButton:focus {
+  cursor: pointer;
+  background-color: #f8f8f8;
+  color: #333333;
+}
+
+.searchInput {
+  display: none;
+  width: auto;
+  line-height: 1rem;
+  padding: 0.625rem 0.9375rem;
+  border: 0.125rem solid #333333;
+  border-radius: 0.625rem;
+}
+
+::placeholder {
+  color: #ababab;
+}
+
+.right {
+  width: 37%;
+  background-color: #f8f8f8;
+  padding: 2.5rem;
+}
+
+.fav {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.25rem;
+}
+
+.closeFav {
+  display: none;
+}
+
+.openFav {
+  display: none;
+}
+
+.favourite {
+  color: #ababab;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.favouriteJokes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.favJoke {
+  background-color: #ffffff;
+  box-shadow: 0px 4px 6px 0px #0000001a;
+  width: 83.3%;
+  margin-top: 0;
+}
+
+.favJoke .likeButton {
+  background-color: #ffffff;
+}
+
+.favJoke .jokeCategory {
+  background-color: #f8f8f8;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  h4 {
+    line-height: 1.75rem;
+    margin-left: 0.625rem;
+  }
+
+  .left {
+    padding: 2.5rem;
+    width: 100%;
+  }
+
+  .topFav {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .openFav {
+    display: flex;
+    border: none;
+    background-color: #ffffff;
+    padding: 0;
+  }
+
+  .jokes {
+    width: 100%;
+  }
+
+  .right {
+    position: fixed;
+    height: 100vh;
+    width: 30rem;
+    top: 0;
+    right: -30rem;
+    background-color: #f8f8f8;
+    padding: 0;
+    transition: all 0.7s ease-in-out;
+    z-index: 10;
+  }
+
+  .cover-block {
+    display: none;
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+  }
+
+  .fav {
+    justify-content: end;
+    padding: 2.5rem;
+    padding-bottom: 0;
+  }
+
+  .closeFav {
+    display: flex;
+    border: none;
+    background-color: #fff;
+    padding: 0;
+  }
+
+  .favouriteJokes {
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+  }
+
+  .favJoke {
+    display: flex;
+    width: auto;
+    padding: 1.25rem 1.75rem 1.25rem 1.25rem;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  h4 {
+    line-height: 1.75rem;
+    margin-left: 0.625rem;
+  }
+
+  .left {
+    padding: 2.5rem;
+    width: 100%;
+  }
+
+  .topFav {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .openFav {
+    display: flex;
+    border: none;
+    background-color: #ffffff;
+    padding: 0;
+  }
+
+  .jokes {
+    width: 100%;
+  }
+
+  .right {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    right: -100%;
+    background-color: #f8f8f8;
+    padding: 0;
+    transition: all 0.7s ease-in-out;
+  }
+
+  .fav {
+    justify-content: end;
+    padding: 2.5rem;
+    padding-bottom: 0;
+  }
+
+  .closeFav {
+    display: flex;
+    border: none;
+    background-color: #fff;
+    padding: 0;
+  }
+
+  .favouriteJokes {
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+  }
+
+  .favJoke {
+    display: flex;
+    width: auto;
+    padding: 1.25rem 1.75rem 1.25rem 1.25rem;
+  }
+}
