@@ -2,12 +2,21 @@ import {
   countTime,
   fetchCategoryJoke,
   addToStorage,
-  deleteFomStorage,
+  deleteFromStorage,
   checkStorage,
-} from './model.js';
+} from './model';
 
-const createLikeButton = (data) => {
+export interface dataInterface {
+  id: string,
+  updated_at: string,
+  url: string,
+  categories: Array<String>,
+  value: string,
+}
+
+const createLikeButton = (data: dataInterface) => {
   const icon = document.createElement('img');
+
   const button = document.createElement('button');
 
   icon.classList.add('likeIcon');
@@ -20,13 +29,13 @@ const createLikeButton = (data) => {
 
   button.classList.add('likeButton');
   button.onclick =
-    checkStorage(data.id) === true ? deleteFomStorage : addToStorage;
+    checkStorage(data.id) === true ? deleteFromStorage : addToStorage;
 
   button.appendChild(icon);
   return button;
 };
 
-export const renderCard = (data) => {
+export const renderCard = (data: dataInterface) => {
   const messageIcon = document.createElement('img');
   const id = document.createElement('p');
   const joke = document.createElement('p');
@@ -83,7 +92,7 @@ export const renderCard = (data) => {
   cardPlace.appendChild(jokeCard);
 };
 
-export const renderCategory = (data) => {
+export const renderCategory = (data: string) => {
   const categoryPlace = document.querySelector('.categorySelector');
   const category = document.createElement('button');
 
